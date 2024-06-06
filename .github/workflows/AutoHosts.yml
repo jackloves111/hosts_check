@@ -19,7 +19,7 @@ jobs:
             
       - name: Download AutoHosts.txt  
         run: |  
-          wget "${{ secrets.AutoHosts_URL }}/hosts.txt" -O AutoHosts.txt  
+          wget "${{ secrets.hosts_URL }}/hosts.txt" -O AutoHosts.txt  
             
       - name: Commit and push if AutoHosts.txt changed  
         run: |  
