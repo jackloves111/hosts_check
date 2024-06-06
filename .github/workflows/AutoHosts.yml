@@ -1,4 +1,4 @@
-name: Download hosts.txt  
+name: Download AutoHosts.txt  
   
 on:  
   push:  
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:  # 允许手动触发  
   
 jobs:  
-  download-hosts:  
+  download-AutoHosts:  
     runs-on: ubuntu-latest  
     steps:  
       - name: Checkout repository  
@@ -17,18 +17,18 @@ jobs:
           fetch-depth: 0  # 获取整个仓库的历史记录，以便能够推送更改  
           ref: master  # 切换到master分支  
             
-      - name: Download hosts.txt  
+      - name: Download AutoHosts.txt  
         run: |  
-          wget "${{ secrets.HOSTS_URL }}/hosts.txt" -O hosts.txt  
+          wget "${{ secrets.AutoHosts_URL }}/hosts.txt" -O AutoHosts.txt  
             
-      - name: Commit and push if hosts.txt changed  
+      - name: Commit and push if AutoHosts.txt changed  
         run: |  
           git config --global user.name 'jackloves111'  
           git config --global user.email '1056349644@qq.com'  
-          git add hosts.txt  
-          if [ -z "$(git status --porcelain hosts.txt)" ]; then  
-            echo "No changes to hosts.txt"  
+          git add AutoHosts.txt  
+          if [ -z "$(git status --porcelain AutoHosts.txt)" ]; then  
+            echo "No changes to AutoHosts.txt"  
           else  
-            git commit -m "Update hosts.txt"  
+            git commit -m "Update AutoHosts.txt"  
             git push origin HEAD:master  # 推送到master分支  
           fi
