@@ -23,8 +23,8 @@ jobs:
             
       - name: Commit and push if hosts.txt changed  
         run: |  
-          git config --local user.email "action@github.com"  
-          git config --local user.name "GitHub Action"  
+          git config --global user.name 'jackloves111'  
+          git config --global user.email '1056349644@qq.com'  
           git add hosts.txt  
           if [ -z "$(git status --porcelain hosts.txt)" ]; then  
             echo "No changes to hosts.txt"  
