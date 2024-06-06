@@ -1,4 +1,4 @@
-name: Download AutoHosts.txt  
+name: Download hosts.txt  
   
 on:  
   push:  
@@ -16,16 +16,16 @@ jobs:
         with:  
           fetch-depth: 0  # 获取整个仓库的历史记录，以便能够推送更改  
           ref: master  # 切换到master分支  
-  
-      - name: Download AutoHosts.txt  
+            
+      - name: Download hosts.txt  
         run: |  
-          wget http://47.97.11.31:6008/hosts.txt -O AutoHosts.txt  
-  
-      - name: Commit and push if AutoHosts changed  
+          wget "${{ secrets.HOSTS_URL }}/hosts.txt" -O hosts.txt  
+            
+      - name: Commit and push if hosts.txt changed  
         run: |  
-          git config --global user.name 'jackloves111'  
-          git config --global user.email '1056349644@qq.com'  
-          git add AutoHosts.txt  
+          git config --local user.email "action@github.com"  
+          git config --local user.name "GitHub Action"  
+          git add hosts.txt  
           if [ -z "$(git status --porcelain hosts.txt)" ]; then  
             echo "No changes to hosts.txt"  
           else  
