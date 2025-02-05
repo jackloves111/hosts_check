@@ -8,6 +8,8 @@ on:
 jobs:  
   ping:  
     runs-on: ubuntu-latest  
+    permissions:
+      contents: write  # 用于提交文件
   
     steps:  
       - name: Checkout code  
