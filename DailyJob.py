@@ -26,15 +26,27 @@ def pingBatch(ips):
 
 
 # ping ip返回ip是否连通
-def pingIp(ip) -> bool:
-    result = ping(ip)
-    if result is not None:
-        print(f"[√] IP:{ip}  可以ping通，延迟为{result}毫秒")
-        return True
-    else:
-        print(f"[×] IP:{ip}  无法ping通")
+# def pingIp(ip) -> bool:
+#     result = ping(ip)
+#     if result is not None:
+#         print(f"[√] IP:{ip}  可以ping通，延迟为{result}毫秒")
+#         return True
+#     else:
+#         print(f"[×] IP:{ip}  无法ping通")
+#         return False
+        
+# 替换原来的 pingIp 函数
+def pingIp(ip):
+    try:
+        result = subprocess.run(
+            ['ping', '-c', '1', '-W', '1', ip],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=2
+        )
+        return result.returncode == 0
+    except:
         return False
-
 
 # 返回host对饮domain的解析结果列表
 def analysis(domain, dns) -> list:
