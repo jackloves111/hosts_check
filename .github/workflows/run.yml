@@ -1,35 +1,35 @@
-name: Daily Ping  
+# name: Daily Ping  
   
-on:  
-  workflow_dispatch: # 允许手动触发工作流
-  schedule:  
-    - cron: "0 16 * * *"  
+# on:  
+#   workflow_dispatch: # 允许手动触发工作流
+#   schedule:  
+#     - cron: "0 16 * * *"  
   
-jobs:  
-  ping:  
-    runs-on: ubuntu-latest  
+# jobs:  
+#   ping:  
+#     runs-on: ubuntu-latest  
   
-    steps:  
-      - name: Checkout code  
-        uses: actions/checkout@v2  
-        with:  
-          fetch-depth: 0 # 获取项目的全部提交历史，以便能够正确地推送更改  
-          token: ${{ secrets.PUSH_TOKEN }} # 使用提供的GitHub令牌进行身份验证  
+#     steps:  
+#       - name: Checkout code  
+#         uses: actions/checkout@v2  
+#         with:  
+#           fetch-depth: 0 # 获取项目的全部提交历史，以便能够正确地推送更改  
+#           token: ${{ secrets.PUSH_TOKEN }} # 使用提供的GitHub令牌进行身份验证  
   
-      - name: Set up Python  
-        uses: actions/setup-python@v2  
-        with:  
-          python-version: 3.10.11  
+#       - name: Set up Python  
+#         uses: actions/setup-python@v2  
+#         with:  
+#           python-version: 3.10.11  
   
-      - name: Install dependencies  
-        run: |  
-          pip install ping3 requests  
+#       - name: Install dependencies  
+#         run: |  
+#           pip install ping3 requests  
   
-      - name: Run DailyJob.py and commit hosts.txt  
-        run: |  
-          python DailyJob.py # 假设这个脚本会在当前目录下生成hosts.txt  
-          git config --global user.name 'jackloves111'  
-          git config --global user.email '1056349644@qq.com'  
-          git add hosts.txt  
-          git commit -m "Automated commit of hosts.txt"  
-          git push
+#       - name: Run DailyJob.py and commit hosts.txt  
+#         run: |  
+#           python DailyJob.py # 假设这个脚本会在当前目录下生成hosts.txt  
+#           git config --global user.name 'jackloves111'  
+#           git config --global user.email '1056349644@qq.com'  
+#           git add hosts.txt  
+#           git commit -m "Automated commit of hosts.txt"  
+#           git push
