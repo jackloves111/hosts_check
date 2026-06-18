@@ -1,11 +1,12 @@
 ###start###
-185.93.1.250 image.tmdb.org
-169.150.249.169 image.tmdb.org
+185.93.1.251 image.tmdb.org
+143.244.50.211 image.tmdb.org
 108.156.144.60 www.themoviedb.org
 18.65.14.84 www.themoviedb.org
 18.65.14.46 www.themoviedb.org
 108.156.144.39 www.themoviedb.org
+18.65.14.113 www.themoviedb.org
 108.156.144.45 www.themoviedb.org
 108.156.144.11 www.themoviedb.org
-###最后更新时间:2026-06-17 01:00:19###
+###最后更新时间:2026-06-18 01:00:13###
 ###end###
